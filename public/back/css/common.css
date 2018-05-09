@@ -1,14 +1,153 @@
-html,body {
-  background-color: #222D32;
+html, body {
   height: 100%;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+a:link,
+a:visited,
+a:hover,
+a:active {
+  text-decoration: none;
+}
+
+.bg-color {
+  background-color: #222D32;
+}
+
+/*登录部分*/
 .login .panel-heading .panel-title {
   font-size: 20px;
   height: 40px;
   line-height: 40px;
 }
+
 .login.panel {
-  border:none;
+  border: none;
   margin-top: 150px;
+}
+
+/*主页 侧边栏*/
+.aside {
+  position: fixed;
+  width: 180px;
+  background-color: #222D32;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: 999;
+  transition: all .5s;
+}
+
+.aside.menuhide {
+  left: -180px;
+}
+
+.aside .bander {
+  font-size: 24px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  background-color: #367FA9;
+}
+
+.aside .bander a {
+  color: #fff;
+}
+
+.aside .user {
+  width: 180px;
+  height: 180px;
+  padding-top: 40px;
+}
+
+.aside .user img {
+  display: block;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  margin: 0 auto;
+}
+
+.aside .user p {
+  text-align: center;
+  height: 30px;
+  line-height: 30px;
+  color: #fff;
+  font-size: 14px;
+}
+
+.aside .menu a {
+  color: #fff;
+  display: block;
+  height: 40px;
+  padding-left: 50px;
+  line-height: 40px;
+  border-left: 3px solid transparent;
+}
+
+.aside .menu a.current {
+  background-color: #1D1F21;
+  border-left: 3px solid #006699;
+}
+
+.aside .menu a i {
+  margin-right: 5px;
+}
+
+.aside .menu .second-list a {
+  padding-left: 70px;
+  
+}
+
+/*主题部分*/
+.main {
+  height: 1000px;
+  padding-left: 180px;
+  background-color: deepskyblue;
+  transition: all .5s;
+}
+
+.main.grow {
+  padding-left: 0;
+}
+
+.main .top-navbar {
+  background-color: #3C8DBC;
+  height: 50px;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  padding-left: 180px;
+  transition: all .5s;
+}
+
+.main .top-navbar.grow {
+  padding-left: 0;
+}
+
+.main .top-navbar a {
+  color: #fff;
+}
+
+.main .icon-menu,
+.main .icon-logout {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  font-size: 16px;
+}
+
+.main .body {
+  padding-top: 70px;
+  
 }

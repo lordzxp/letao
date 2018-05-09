@@ -1,66 +1,60 @@
 /**
  * Created by zxp on 2018/5/9.
  */
-//登录功能表单验证
+//登录信息验证
 $(function () {
-  $("#form").bootstrapValidator({
-    feedbackIcons: {
-      valid: 'glyphicon glyphicon-ok',
-      invalid: 'glyphicon glyphicon-remove',
-      validating: 'glyphicon glyphicon-refresh'
-    },
-    fields: {
-      username: {
-        validators: {
-          notEmpty: {
-            message: "用户名不能为空"
-          },
-          callback: {
-            message: "用户名错误"
-          }
-        }
-      },
-      password: {
-        validators: {
-          notEmpty: {
-            message: "密码不能为空"
-          },
-          stringLength: {
-            min: 6,
-            max: 12,
-            message: "密码长度必须为6~12位"
-          },
-          callback: {
-            message: "密码错误"
-          }
-        }
+  if (location.href.indexOf("login.html") != -1) {
+    return;
+  }
+  $.ajax({
+    url: '/employee/checkRootLogin',
+    type: 'get',
+    dataType: 'json',
+    success: function (data) {
+      if (data.error === 400) {
+        location.href = "login.html";
       }
     }
   })
-  //表单验证完毕,通过ajax提交到后台验证
-  $("#form").on("success.form.bv", function (e) {
-    e.preventDefault();
+})
+
+$(function () {
+  NProgress.configure({showSpinner: false});
+  $(document).ajaxStart(function () {
+    NProgress.start();
+  })
+  $(document).ajaxStop(function () {
+    NProgress.done();
+  })
+})
+
+
+//侧边栏功能显示隐藏
+$(function () {
+  $("#category").click(function () {
+    $(".second-list").stop().slideToggle();
+  })
+  
+  $(".top-navbar .icon-menu").click(function () {
+    $(".aside").toggleClass("menuhide");
+    $(".main").toggleClass("grow");
+    $('.main .top-navbar').toggleClass("grow");
+  })
+})
+
+//登出功能
+$(function () {
+  $(".top-navbar .icon-logout").click(function () {
+    console.log(1);
     $.ajax({
-      url: '/employee/employeeLogin',
-      data: $("#form").serialize(),
+      url: "/employee/employeeLogout",
+      type: 'get',
       dataType: 'json',
-      type: "post",
       success: function (data) {
-        console.log(data);
-        if(data.success){
-          location.href = "index.html";
-        }else if(data.error === 1000) {
-          $("#form").data("bootstrapValidator").updateStatus("username","INVALID","callback");
-        }else if(data.error === 1001) {
-          $("#form").data("bootstrapValidator").updateStatus("password","INVALID","callback");
+        if (data.success) {
+          location.href = "login.html";
         }
       }
     })
   })
-  
-//  重置功能
-  $("[type=reset]").click(function () {
-      $("#form").data("bootstrapValidator").resetForm(true);
-  })
-  
 })
