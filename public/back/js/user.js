@@ -25,12 +25,33 @@ $(function () {
       }
     })
   }
+  
+  //修改用户状态
   var id;
   var delStatus;
   
-  // $(".user-content .table").on('click','.btn',function () {
-  //   id = $(this).parent().data('id');
-  //   delStatus = $(this).parent().data("status");
-  //   delStatus = delStatus == 1 ? 0 : 1;
-  // })
+  $(".user-content .table").on('click', '.btn', function () {
+    $("#changeStatus").modal("show");
+    id = $(this).parent().data('id');
+    delStatus = $(this).parent().data("status");
+    delStatus = (delStatus == 1) ? 0 : 1;
+  })
+  $("#btn-sure").click(function () {
+    $.ajax({
+      url: "/user/updateUser",
+      data: {
+        id: id,
+        isDelete: delStatus
+      },
+      type: "POST",
+      dataType: "json",
+      success: function (data) {
+        if (data.success) {
+          currentPage = 1;
+          render();
+          $("#changeStatus").modal("hide");
+        }
+      }
+    })
+  })
 })
