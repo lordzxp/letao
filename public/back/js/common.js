@@ -44,8 +44,7 @@ $(function () {
 
 //登出功能
 $(function () {
-  $(".top-navbar .icon-logout").click(function () {
-    console.log(1);
+  $(".modal .btn-logout").click(function () {
     $.ajax({
       url: "/employee/employeeLogout",
       type: 'get',

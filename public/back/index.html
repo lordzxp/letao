@@ -6,12 +6,13 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <title>乐淘</title>
-  <link rel="icon" href="favicon.ico">
+  <!--<link rel="icon" href="favicon.ico">-->
   <link rel="stylesheet" href="./libs/bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="./libs/nprogress/nprogress.css">
   <link rel="stylesheet" href="./css/common.css">
 </head>
 <body>
+<!--侧边栏-->
 <div class="aside">
   <div class="bander"><a href="#">黑马20期</a></div>
   <div class="user">
@@ -29,22 +30,47 @@
     <li><a href="product.html"><i class="glyphicon glyphicon-tags"></i>商品管理</a></li>
   </ul>
 </div>
+<!--主体-->
 <div class="main">
+  <!--上导航-->
   <div class="top-navbar">
     <div class="icon-menu pull-left"><a href="javascript:;"><i class="glyphicon glyphicon-align-justify"></i></a></div>
-    <div class="icon-logout pull-right"><a href="javascript:;"><i class="glyphicon glyphicon-log-out"></i></a></div>
+    <div class="icon-logout pull-right" data-toggle="modal" data-target="#logout"><a href="javascript:;"><i class="glyphicon glyphicon-log-out"></i></a></div>
   </div>
+  <!--下面-->
   <div class="body container-fluid">
     <ol class="breadcrumb">
       <li><a href="#">管理系统</a></li>
       <li class="active">首页</li>
     </ol>
+    <div class="index-charts col-md-6" id="register-num"></div>
+    <div class="index-charts col-md-6" id="hot-product"></div>
+  </div>
+</div>
+
+<!--模态框-->
+<div class="modal fade" id="logout">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+        <h4 class="modal-title">温馨提示</h4>
+      </div>
+      <div class="modal-body">
+        <p><i class="glyphicon glyphicon-info-sign"></i>您确定要退出后台管理系统吗？</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+        <button type="button" class="btn btn-primary btn-logout">退出</button>
+      </div>
+    </div>
   </div>
 </div>
 
 <script src="./libs/jquery/jquery.js"></script>
 <script src="./libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="./libs/nprogress/nprogress.js"></script>
+<script src="./libs/echarts/echarts.min.js"></script>
 <script src="./js/common.js"></script>
 <script src="./js/index.js"></script>
 </body>

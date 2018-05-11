@@ -109,9 +109,7 @@ a:active {
 
 /*主题部分*/
 .main {
-  height: 1000px;
   padding-left: 180px;
-  background-color: deepskyblue;
   transition: all .5s;
 }
 
@@ -147,7 +145,20 @@ a:active {
   font-size: 16px;
 }
 
-.main .body {
+.main {
   padding-top: 70px;
   
+}
+
+/*主页统计图*/
+.main .body {
+  height:100%;
+}
+.main .index-charts {
+  height: 400px;
+}
+
+/*模态框*/
+.modal .modal-body p {
+  color: red;
 }
