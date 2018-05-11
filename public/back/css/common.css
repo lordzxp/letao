@@ -172,3 +172,12 @@ a:active {
   vertical-align: middle;
 }
 
+/*二级分类*/
+.displayImg {
+  display: block;
+  margin-top: 15px;
+}
+
+#fileupload {
+  display: none;
+}
