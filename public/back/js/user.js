@@ -17,6 +17,20 @@ $(function () {
           bootstrapMajorVersion: 3,
           currentPage: currentPage,
           totalPages: Math.ceil(data.total / size),
+          itemTexts: function (type, page, current) {
+            switch (type) {
+              case "first":
+                return "首页";
+              case "prev":
+                return "上一页";
+              case "next":
+                return "下一页";
+              case "last":
+                return "末页";
+              case "page":
+                return page;
+            }
+          },
           onPageClicked: function (event, originEvent, type, page) {
             currentPage = page;
             render();
@@ -47,7 +61,6 @@ $(function () {
       dataType: "json",
       success: function (data) {
         if (data.success) {
-          currentPage = 1;
           render();
           $("#changeStatus").modal("hide");
         }
