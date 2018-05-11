@@ -162,3 +162,13 @@ a:active {
 .modal .modal-body p {
   color: red;
 }
+
+
+/*用户界面*/
+.user-content .table.table-bordered td,
+.user-content .table.table-bordered th
+{
+  text-align: center;
+  vertical-align: middle;
+}
+
