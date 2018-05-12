@@ -1,0 +1,157 @@
+html, body {
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+ul {
+  list-style: none;
+}
+
+.lt-container {
+  width: 100%;
+  max-width: 640px;
+  min-width: 320px;
+  height: 100%;
+  margin: 0 auto;
+  position: relative;
+  padding-top: 45px;
+  padding-bottom: 55px;
+}
+
+.lt-header,
+.lt-footer {
+  position: absolute;
+  left: 0;
+  background-color: #006699;
+  width: 100%;
+}
+
+.lt-header {
+  height: 45px;
+  top: 0;
+  color: #fff;
+}
+
+.lt-header .header-left,
+.lt-header .header-right {
+  position: absolute;
+  top: 0;
+  width: 45px;
+  height: 45px;
+  text-align: center;
+  line-height: 45px;
+}
+
+.lt-header .header-left {
+  left: 0;
+}
+
+.lt-header .header-right {
+  right: 0;
+}
+
+.lt-header h5 {
+  text-align: center;
+  height: 45px;
+  line-height: 45px;
+  margin: 0;
+  font-size: 18px;
+  color: #fff;
+}
+
+.lt-header a {
+  display: block;
+  color: #fff;
+}
+
+.lt-main {
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+/*轮播图*/
+.sliders {
+  position: relative;
+}
+.sliders .mui-slider-indicator {
+  z-index: 333;
+}
+
+/*导航部分*/
+
+.lt-nav {
+  padding: 10px;
+}
+.lt-nav li {
+  float: left;
+  width: 33.33%;
+}
+.lt-nav li a {
+  display: block;
+}
+
+.lt-pro {
+  padding: 10px;
+}
+.lt-pro li{
+  width: 48%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  text-align: center;
+  float: left;
+  margin-bottom: 10px;
+}
+.lt-pro li:nth-child(2n+1) {
+  margin-right: 4%;
+}
+.lt-pro li a {
+  display: block;
+}
+.lt-pro li button {
+  display: block;
+  margin: 10px auto;
+}
+
+
+.lt-footer {
+  height: 55px;
+  bottom: 0;
+  overflow: hidden;
+  padding-top: 8px;
+}
+
+.lt-footer li {
+  width: 25%;
+  float: left;
+  text-align: center;
+}
+
+
+.lt-footer li a {
+  display: block;
+  color: #fff;
+}
+
+.lt-footer li a p {
+  color: #fff;
+}
+
+.lt-footer li a.current {
+  color:orange;
+}
+.lt-footer li a.current p {
+  color: orange;
+}

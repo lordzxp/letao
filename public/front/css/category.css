@@ -1,0 +1,45 @@
+.cate-left {
+  float: left;
+  width: 90px;
+  height: 100%;
+  background-color: #fff;
+  overflow: hidden;
+  position: relative;
+}
+.cate-left li {
+  width: 90px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-right: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+.cate-left li a {
+  display: block;
+  color: #666;
+  background-color: #E3E4E5;
+}
+.cate-left li a.current {
+  background-color: #fff;
+}
+.cate-right {
+  overflow: hidden;
+  height: 100%;
+  position: relative;
+}
+
+.cate-right li {
+  width: 33.33%;
+  float: left;
+  text-align: center;
+  padding: 5px;
+}
+.cate-right li a {
+  display: block;
+}
+
+.cate-right li a img {
+  width: 70px;
+  height: 50px;
+  margin: 0 auto;
+}
