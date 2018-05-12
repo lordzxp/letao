@@ -6,9 +6,9 @@
   <meta name="viewport"
         content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
   <title>乐淘</title>
-  <link rel="icon" href="favicon.ico">
   <link rel="stylesheet" href="./libs/bootstrap/css/bootstrap.css">
   <link rel="stylesheet" href="./libs/nprogress/nprogress.css">
+  <link rel="stylesheet" href="./libs/bootstrap-validator/css/bootstrapValidator.min.css">
   <link rel="stylesheet" href="./css/common.css">
 </head>
 <body>
@@ -19,9 +19,9 @@
     <p>超级管理员</p>
   </div>
   <ul class="menu">
-    <li ><a href="user.html" ><i class="glyphicon glyphicon-user"></i>用户管理</a></li>
+    <li><a href="user.html"><i class="glyphicon glyphicon-user"></i>用户管理</a></li>
     <li id="category"><a href="#"><i class="glyphicon glyphicon-list"></i>分类管理</a>
-      <div class="second-list" style="display: none">
+      <div class="second-list" style="display: none;">
         <a href="topCate.html">一级分类</a>
         <a href="secondCate.html">二级分类</a>
       </div>
@@ -32,13 +32,36 @@
 <div class="main">
   <div class="top-navbar">
     <div class="icon-menu pull-left"><a href="javascript:;"><i class="glyphicon glyphicon-align-justify"></i></a></div>
-    <div class="icon-logout pull-right" data-toggle="modal" data-target="#logout"><a href="javascript:;"><i class="glyphicon glyphicon-log-out"></i></a></div>
+    <div class="icon-logout pull-right" data-toggle="modal" data-target="#logout"><a href="javascript:;"><i
+        class="glyphicon glyphicon-log-out"></i></a></div>
   </div>
   <div class="body container-fluid">
     <ol class="breadcrumb">
       <li><a href="#">管理系统</a></li>
-      <li class="active">商品管理</li>
+      <li class="active">商品</li>
     </ol>
+    
+    <button class="btn btn-default" id="btn-addProduct" style="margin-bottom: 20px">添加商品</button>
+    <div class="product-content">
+      <table class="table table-bordered table-hover">
+        <thead>
+        <tr>
+          <th width=10%>序号</th>
+          <th width=25%>商品名称</th>
+          <th width=25%>商品描述</th>
+          <th width=10%>商品库存</th>
+          <th width=10%>商品尺寸</th>
+          <th width=10%>商品状态</th>
+          <th width=10%>操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        </tbody>
+      </table>
+    </div>
+    <div class="text-right">
+      <ul id="paginator"></ul>
+    </div>
   </div>
 </div>
 
@@ -61,10 +84,96 @@
   </div>
 </div>
 
+<!--添加分类模态框-->
+<div class="modal fade" id="productModal">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal"><span>&times;</span></button>
+        <h4 class="modal-title">添加商品</h4>
+      </div>
+      <form id="form">
+        <div class="modal-body">
+          <div class="form-group">
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                <span id="secxt">请选择二级级分类</span>
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" id="proItems">
+              </ul>
+              <input type="hidden" name="brandId">
+            </div>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="proName" placeholder="请输入商品名称">
+          </div>
+          <div class="form-group">
+            <textarea type="text" class="form-control" name="proDesc" placeholder="请输入商品描述"></textarea>
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="num" placeholder="请输入商品库存">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="size" placeholder="请输入商品尺码">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="oldPrice" placeholder="请输入原价">
+          </div>
+          <div class="form-group">
+            <input type="text" class="form-control" name="price" placeholder="请输入现价">
+          </div>
+          <div class="form-group">
+            <label class="btn btn-default" for="fileupload" id="btn-upload">上传图片</label>
+            <input type="file" name="pic1" id="fileupload" data-url="/product/addProductPic" multiple>
+            <div class="pro-imgs">
+            
+            </div>
+            <input type="hidden" name="picStatus">
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="reset" class="btn btn-default" data-dismiss="modal">取消</button>
+          <button type="submit" class="btn btn-primary" id="add">添加</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<script type="text/html" id="productTmp">
+  {{each rows v i}}
+  <tr>
+    <td>{{ i + 1 + (page - 1) * size}}</td>
+    <td>{{v.proName}}</td>
+    <td>{{v.proDesc}}</td>
+    <td>{{v.num}}</td>
+    <td>{{v.size}}</td>
+    {{if v.statu == 1}}
+    <td>已上架</td>
+    <td><button class="btn btn-danger">下架</button></td>
+    {{else}}
+    <td>已下架</td>
+    <td><button class="btn btn-success">上架</button></td>
+    {{/if}}
+  </tr>
+  {{/each}}
+</script>
+<script type="text/html" id="secItemList">
+  {{each rows v i}}
+  <li><a href="#" data-id="{{v.id}}">{{v.brandName}}</a></li>
+  {{/each}}
+</script>
+
 <script src="./libs/jquery/jquery.js"></script>
 <script src="./libs/bootstrap/js/bootstrap.min.js"></script>
 <script src="./libs/nprogress/nprogress.js"></script>
+<script src="./libs/bootstrap-validator/js/bootstrapValidator.min.js"></script>
+<script src="./libs/bootstrap-paginator/bootstrap-paginator.min.js"></script>
+<script src="./libs/artTemplate/template-web.js"></script>
+<script src="./libs/jquery-fileupload/jquery.ui.widget.js"></script>
+<script src="./libs/jquery-fileupload/jquery.fileupload.js"></script>
 <script src="./js/common.js"></script>
-<script src="./js/index.js"></script>
+<script src="./js/product.js"></script>
 </body>
 </html>

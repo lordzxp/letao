@@ -19,7 +19,7 @@ $(function () {
 })
 
 $(function () {
-  NProgress.configure({showSpinner: false});
+  NProgress.configure({sshowSpinner: false});
   $(document).ajaxStart(function () {
     NProgress.start();
   })

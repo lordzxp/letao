@@ -173,11 +173,14 @@ a:active {
 }
 
 /*二级分类*/
-.displayImg {
-  display: block;
-  margin-top: 15px;
+#btn-upload {
+  margin-bottom: 15px;
 }
 
 #fileupload {
   display: none;
+}
+
+.pro-imgs img {
+  margin-right: 10px;
 }
