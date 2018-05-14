@@ -1,0 +1,30 @@
+
+.lt-history {
+  width: 100%;
+  padding: 10px;
+  font-size: 12px;
+}
+.lt-history .hs-title {
+  height: 30px;
+  line-height: 30px;
+}
+.lt-history .hs-result {
+  border: 1px dashed red;
+}
+.lt-history .hs-result li {
+  height: 30px;
+  line-height: 30px;
+  padding-left: 10px;
+  border-bottom:1px dashed red;
+}
+.lt-history .hs-result li:last-child {
+  border-bottom: none;
+}
+.lt-history .hs-result li a {
+  display: block;
+  
+}
+.lt-history .hs-result li a i {
+  height: 30px;
+  line-height: 30px;
+}

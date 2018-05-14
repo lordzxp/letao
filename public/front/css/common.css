@@ -105,6 +105,7 @@ ul {
 
 .lt-pro {
   padding: 10px;
+  position: relative;
 }
 .lt-pro li{
   width: 48%;
@@ -119,6 +120,13 @@ ul {
 }
 .lt-pro li a {
   display: block;
+}
+.lt-pro li a .price {
+  color:red;
+}
+.lt-pro li a .oldrice {
+  text-decoration: line-through;
+  color: #ccc;
 }
 .lt-pro li button {
   display: block;
@@ -154,4 +162,43 @@ ul {
 }
 .lt-footer li a.current p {
   color: orange;
+}
+
+.lt-search {
+  padding: 10px;
+  width: 100%;
+}
+.lt-search input {
+  height: 34px;
+  line-height: 34px;
+  border-radius: 5px;
+  border: 1px solid #007aff;
+  font-size: 12px;
+  margin: 0;
+}
+.lt-search button {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  border-radius: 0 5px 5px 0;
+}
+
+.loading {
+  width: 50px;
+  height: 50px;
+  border: 5px solid #007aff;
+  position: fixed;
+  left: 50%;
+  tansform:translateX(-50%);
+  top:200px;
+  animation: rotate 2s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: translateX(-50%) rotate(0deg);
+  }
+  to {
+    transform: translateX(-50%) rotate(360deg);
+  }
 }
